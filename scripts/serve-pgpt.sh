@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: Apache-2.0
 # PrivateGPT (zylon-ai) RAG server — middleware only. LLM = :8081 (Dolphin), the
 # embedder = :8082 (Qwen3-Embedding-0.6B, 1024-dim). Persistence is embedded
 # sqlite + on-disk Qdrant under ./local_data (CWD = /home/USER/pgpt).

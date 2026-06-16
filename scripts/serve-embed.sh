@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: Apache-2.0
 # Serve Qwen3-Embedding-0.6B as an OpenAI-compatible /v1/embeddings endpoint on
 # the GTX 1080. Qwen3-Embedding uses LAST-token pooling (NOT mean) and emits
 # 1024-dim vectors. MUST use the CUDA-12.9 build (Pascal sm_61 support).

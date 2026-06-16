@@ -144,3 +144,5 @@ systemctl --user enable  --now llama-qwen
    in `serve-pgpt.sh`, null `qdrant.path` in PrivateGPT's `settings.yaml`.
 8. `systemctl --user enable --now container-qdrant llama-embed llama-dolphin privategpt`.
 9. Pre-warm BM25, then verify with the commands above.
+
+Proudly Made in Nebraska. Go Big Red! 🌽 https://xkcd.com/2347/

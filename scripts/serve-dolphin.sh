@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: Apache-2.0
 # Serve Dolphin-2.9.4-Llama-3.1-8B (uncensored, Eric Hartford) as an
 # OpenAI-compatible endpoint. Target (8B) on the RTX 3060; optional speculative
 # decoding draft (Llama-3.2-1B, vocab-compatible) on the GTX 1080 for faster gen.

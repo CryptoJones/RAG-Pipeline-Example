@@ -17,3 +17,6 @@ documents_raw/
 
 # OS
 .DS_Store
+
+# Claude Code per-operator state
+.claude/

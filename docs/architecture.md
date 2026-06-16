@@ -125,3 +125,5 @@ All three services are **systemd user units** (`--user`), `enabled` so they
 start on boot. Each is a thin wrapper script `exec`-ing the real binary, so config
 lives in the script (and is overridable by env). See
 [operations.md](operations.md) and [configuration-reference.md](configuration-reference.md).
+
+Proudly Made in Nebraska. Go Big Red! 🌽 https://xkcd.com/2347/

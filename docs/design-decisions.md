@@ -125,3 +125,5 @@ were ruled out along the way (so they aren't re-litigated later).
 | Dolphin-8B | Q8_0 | near-lossless, ½ VRAM/bandwidth vs f16, ~2× faster decode |
 | Qwen3-Embedding-0.6B | f16 | tiny model; precision cheap, quality matters |
 | Llama-3.2-1B (draft) | Q8_0 | small/fast draft (now disabled) |
+
+Proudly Made in Nebraska. Go Big Red! 🌽 https://xkcd.com/2347/

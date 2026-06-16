@@ -4,7 +4,7 @@
 > local LLM, local embeddings, hybrid vector search, and PDF→Markdown
 > preprocessing — wired together and documented end to end.
 
-![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg?logo=apache)](LICENSE)
 ![Deployment](https://img.shields.io/badge/deployment-self--hosted%20%C2%B7%20local-success)
 ![RAG](https://img.shields.io/badge/RAG-PrivateGPT%20v2-d2a8ff)
 ![LLM](https://img.shields.io/badge/LLM-Dolphin--8B%20%C2%B7%20llama.cpp-a5d6ff)
@@ -42,36 +42,6 @@ dead-ends), an operations runbook, and the (genericized) scripts.
 ![RAG pipeline diagram](assets/pipeline.png)
 
 <sub>Source: [`docs/pipeline.dot`](docs/pipeline.dot) · scalable: [`assets/pipeline.svg`](assets/pipeline.svg)</sub>
-
-```mermaid
-flowchart LR
-  subgraph ING["1 - Ingestion (offline)"]
-    raw[("documents_raw/<br/>PDF · DOCX · images")] --> pre["preprocess.py<br/>marker to Markdown"]
-    pre --> md[("documents/<br/>clean .md")] --> ing["bulk-ingest.py<br/>idempotent"]
-  end
-  subgraph HW["GPUs"]
-    emb["Qwen3-Embedding-0.6B<br/>GPU B · 1024-d · last-pool"]
-    llm["Dolphin-2.9.4-8B<br/>GPU A · Q8_0 · tool-calling"]
-  end
-  qd[("Qdrant server<br/>hybrid: dense + sparse BM25")]
-  pg["PrivateGPT<br/>agentic RAG · web UI"]
-  usr(["User / Client"])
-
-  ing --> emb --> qd
-  usr --> pg --> llm
-  llm -. "semantic_search()" .-> pg
-  pg --> qd --> pg
-  pg --> usr
-
-  classDef script fill:#ffb454,stroke:#d98b1f,color:#1a1a1a;
-  classDef model fill:#a5d6ff,stroke:#1f6feb,color:#0d1117;
-  classDef store fill:#7ee787,stroke:#2ea043,color:#0d1117;
-  classDef svc fill:#d2a8ff,stroke:#8957e5,color:#0d1117;
-  class pre,ing script;
-  class emb,llm model;
-  class qd,raw,md store;
-  class pg svc;
-```
 
 ---
 
@@ -196,8 +166,8 @@ python3 ~/pgpt/eval.py ~/pgpt/evalset.jsonl
 - **Hybrid requires a Qdrant server** — the embedded Qdrant client can't do BM25
   hybrid; a containerized server is used instead. ([details](docs/design-decisions.md#retrieval-hybrid-dense--sparse-bm25))
 
----
-
 ## License
 
-MIT — see [LICENSE](LICENSE). © 2026 CryptoJones.
+Apache 2.0. See [LICENSE](LICENSE).
+
+Proudly Made in Nebraska. Go Big Red! 🌽 https://xkcd.com/2347/
