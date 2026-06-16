@@ -1,67 +1,52 @@
-// RAG pipeline diagram — render with:  dot -Tsvg pipeline.dot -o ../assets/pipeline.svg
-//                                       dot -Tpng -Gdpi=150 pipeline.dot -o ../assets/pipeline.png
-digraph RAGPipeline {
+// RAG pipeline diagram — render:
+//   dot -Tsvg pipeline.dot -o ../assets/pipeline.svg
+//   dot -Tpng -Gdpi=160 pipeline.dot -o ../assets/pipeline.png
+digraph RAG {
   rankdir=LR;
-  bgcolor="#0d1117";
-  fontname="Helvetica,Arial,sans-serif"; fontcolor="#e6edf3"; fontsize=22;
+  bgcolor="#ffffff";
+  fontname="DejaVu Sans";
   labelloc="t";
-  label="RAG Pipeline — PrivateGPT · Dolphin-8B · Qwen3-Embedding\n(local · GPU-split · hybrid retrieval)";
-  pad=0.4; nodesep=0.38; ranksep=0.75;
-  node [shape=box style="rounded,filled" fontname="Helvetica,Arial,sans-serif" fontcolor="#0d1117" penwidth=0 margin="0.18,0.10" fontsize=12];
-  edge [color="#7d8590" fontname="Helvetica,Arial,sans-serif" fontcolor="#9da7b3" fontsize=10 penwidth=1.6 arrowsize=0.8];
+  label=<<FONT POINT-SIZE="24"><B>RAG Pipeline</B></FONT><BR ALIGN="CENTER"/><FONT POINT-SIZE="12" COLOR="#64748b">self-hosted &#183; GPU-split &#183; hybrid retrieval</FONT><BR/> >;
+  pad=0.4; nodesep=0.45; ranksep=0.85; splines=spline;
 
+  node [shape=box style="rounded,filled" fontname="DejaVu Sans" fontsize=12
+        color="#cbd5e1" penwidth=1.2 margin="0.22,0.14" fontcolor="#0f172a"];
+  edge [fontname="DejaVu Sans" fontsize=10 color="#94a3b8" fontcolor="#64748b"
+        arrowsize=0.8 penwidth=1.4];
+
+  // ---------- INGESTION (offline) ----------
   subgraph cluster_ingest {
-    label="①  INGESTION  (offline batch)"; labeljust="l";
-    style="rounded,filled"; fillcolor="#161b22"; color="#30363d"; fontcolor="#ffa657"; fontsize=14;
-    raw [label="documents_raw/<collection>/\nPDF · DOCX · XLSX · PPTX · images" fillcolor="#d0d7de"];
-    pre [label="preprocess.py\nmarker · PDF → Markdown (CPU)" fillcolor="#ffb454"];
-    md  [label="documents/<collection>/\nclean .md" fillcolor="#d0d7de"];
-    ing [label="bulk-ingest.py\nsha256 manifest · idempotent\nbase64 → POST /v1/artifacts/ingest" fillcolor="#ffb454"];
+    label=<<FONT POINT-SIZE="13" COLOR="#b45309"><B>  1 · INGESTION</B>  (offline)</FONT>>;
+    labeljust="l"; style="rounded,filled,dashed"; fillcolor="#fffaf2"; color="#fcd9a8"; margin=16;
+    raw  [label=<<B>documents_raw/</B><BR/><FONT POINT-SIZE="9.5" COLOR="#475569">PDF · DOCX · images</FONT>> fillcolor="#eef2f7"];
+    pre  [label=<<B>preprocess.py</B><BR/><FONT POINT-SIZE="9.5" COLOR="#475569">marker → Markdown</FONT>> fillcolor="#ffedd5" color="#f59e0b"];
+    md   [label=<<B>documents/</B><BR/><FONT POINT-SIZE="9.5" COLOR="#475569">clean .md</FONT>> fillcolor="#eef2f7"];
+    ing  [label=<<B>bulk-ingest.py</B><BR/><FONT POINT-SIZE="9.5" COLOR="#475569">chunk · idempotent</FONT>> fillcolor="#ffedd5" color="#f59e0b"];
+    raw -> pre -> md -> ing;
   }
 
+  // ---------- QUERY (live, agentic) ----------
   subgraph cluster_query {
-    label="②  QUERY  (online · agentic)"; labeljust="l";
-    style="rounded,filled"; fillcolor="#161b22"; color="#30363d"; fontcolor="#d2a8ff"; fontsize=14;
-    user [label="User / Client" shape=ellipse fillcolor="#d0d7de"];
-    pgpt [label="PrivateGPT   :8001\n/ui · /v1/messages\nagentic RAG orchestrator" fillcolor="#d2a8ff"];
+    label=<<FONT POINT-SIZE="13" COLOR="#6d28d9"><B>  2 · QUERY</B>  (live · agentic)</FONT>>;
+    labeljust="l"; style="rounded,filled,dashed"; fillcolor="#faf7ff"; color="#ddc9f7"; margin=16;
+    user [label=<<B>User / Client</B>> shape=ellipse fillcolor="#ffffff" color="#94a3b8"];
+    pg   [label=<<B>PrivateGPT</B>  <FONT POINT-SIZE="9" COLOR="#7c3aed">:8001</FONT><BR/><FONT POINT-SIZE="9.5" COLOR="#475569">agentic RAG · web UI</FONT>> fillcolor="#ede4fd" color="#a78bfa"];
+    user -> pg [label="question"];
+    pg -> user [label="grounded answer"];
   }
 
-  subgraph cluster_3060 {
-    label="GPU A · 12 GB"; style="rounded,filled"; fillcolor="#0b2a4a"; color="#1f6feb"; fontcolor="#79c0ff"; fontsize=12;
-    llm [label="llama.cpp   :8081\nDolphin-2.9.4-llama3.1-8b · Q8_0\nLlama-3.1 tool template" fillcolor="#a5d6ff"];
-  }
-  subgraph cluster_1080 {
-    label="GPU B · 8 GB"; style="rounded,filled"; fillcolor="#0b2a4a"; color="#1f6feb"; fontcolor="#79c0ff"; fontsize=12;
-    emb [label="llama.cpp   :8082\nQwen3-Embedding-0.6B · f16\n1024-dim · last-pooling" fillcolor="#a5d6ff"];
-  }
+  // ---------- models (GPU) + stores ----------
+  llm  [label=<<B>Dolphin-2.9.4-8B</B>  <FONT POINT-SIZE="9" COLOR="#1d4ed8">:8081</FONT><BR/><FONT POINT-SIZE="9.5" COLOR="#475569">llama.cpp · Q8 · GPU A · tools</FONT>> fillcolor="#dbeafe" color="#60a5fa"];
+  emb  [label=<<B>Qwen3-Embedding-0.6B</B>  <FONT POINT-SIZE="9" COLOR="#1d4ed8">:8082</FONT><BR/><FONT POINT-SIZE="9.5" COLOR="#475569">1024-d · last-pool · GPU B</FONT>> fillcolor="#dbeafe" color="#60a5fa"];
+  qd   [label=<<B>Qdrant server</B>  <FONT POINT-SIZE="9" COLOR="#15803d">:6333</FONT><BR/><FONT POINT-SIZE="9.5" COLOR="#475569">hybrid: dense + sparse (BM25)</FONT>> fillcolor="#dcfce7" color="#4ade80"];
 
-  store [label="Qdrant server (podman :6333)\nHYBRID: dense(1024) + sparse(BM25)" fillcolor="#7ee787"];
-  sql   [label="SQLite (embedded)\ndoc / index store" fillcolor="#7ee787"];
+  // ingestion → vectors
+  ing -> emb [label="embed chunks"];
+  emb -> qd  [label="dense + sparse"];
 
-  // ingestion edges
-  raw -> pre -> md -> ing;
-  ing -> emb  [label="embed chunks"];
-  emb -> store [label="dense vectors"];
-  ing -> store [label="sparse vectors\n(fastembed BM25)" style=dashed];
-  ing -> sql   [label="metadata" style=dotted];
-
-  // query edges (agentic loop highlighted in pink)
-  user -> pgpt [label="question"];
-  pgpt -> llm  [label="prompt + tool spec"];
-  llm  -> pgpt [label="semantic_search()" color="#f778ba" fontcolor="#f778ba" penwidth=2.2];
-  pgpt -> store [label="hybrid retrieve (top_k=10)" color="#f778ba" fontcolor="#f778ba"];
-  store -> pgpt [label="ranked chunks" color="#f778ba" fontcolor="#f778ba"];
-  pgpt -> llm  [label="context-grounded prompt"];
-  llm  -> pgpt [label="grounded answer"];
-  pgpt -> user [label="answer + citations"];
-
-  // legend
-  subgraph cluster_legend {
-    label="legend"; labeljust="l"; style="rounded,filled"; fillcolor="#161b22"; color="#30363d"; fontcolor="#9da7b3"; fontsize=11;
-    l_script [label="script" fillcolor="#ffb454"];
-    l_model  [label="model (GPU)" fillcolor="#a5d6ff"];
-    l_store  [label="storage" fillcolor="#7ee787"];
-    l_svc    [label="service" fillcolor="#d2a8ff"];
-    l_script -> l_model [style=invis]; l_model -> l_store [style=invis]; l_store -> l_svc [style=invis];
-  }
+  // query ↔ retrieval (agentic loop)
+  pg -> llm [label="prompt + tools"];
+  llm -> pg [label=<<FONT COLOR="#db2777">semantic_search()</FONT>> color="#ec4899" fontcolor="#db2777" penwidth=1.8];
+  pg -> qd [label=<<FONT COLOR="#db2777">hybrid retrieve</FONT>> color="#ec4899" fontcolor="#db2777" constraint=false];
+  qd -> pg [label=<<FONT COLOR="#db2777">top-k chunks</FONT>> color="#ec4899" fontcolor="#db2777" constraint=false];
 }

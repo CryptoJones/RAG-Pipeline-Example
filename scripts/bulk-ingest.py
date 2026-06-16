@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: Apache-2.0
 """bulk-ingest.py - ingest /home/USER/pgpt/documents into PrivateGPT.
 
 One PrivateGPT collection per top-level subfolder of documents/ (files placed

@@ -44,3 +44,5 @@ systemctl --user enable --now container-qdrant llama-embed llama-dolphin private
 See [`../docs/operations.md`](../docs/operations.md) for the full runbook and
 [`../docs/configuration-reference.md`](../docs/configuration-reference.md) for
 every flag/env.
+
+Proudly Made in Nebraska. Go Big Red! 🌽 https://xkcd.com/2347/

@@ -251,3 +251,5 @@ curl -s localhost:8081/v1/chat/completions -d '{"model":"dolphin-8b","max_tokens
   "tools":[{"type":"function","function":{"name":"get_weather","parameters":{"type":"object","properties":{"city":{"type":"string"}},"required":["city"]}}}],
   "tool_choice":"required"}'
 ```
+
+Proudly Made in Nebraska. Go Big Red! 🌽 https://xkcd.com/2347/

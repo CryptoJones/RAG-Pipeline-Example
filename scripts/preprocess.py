@@ -1,4 +1,5 @@
 #!/home/USER/marker-venv/bin/python
+# SPDX-License-Identifier: Apache-2.0
 """preprocess.py - convert documents_raw/ -> documents/ for RAG ingestion.
 
 Uses marker (marker-pdf) to turn PDFs (and images) into clean Markdown, which

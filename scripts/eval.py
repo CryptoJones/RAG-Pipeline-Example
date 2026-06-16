@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: Apache-2.0
 """eval.py - measure RAG quality against a small Q&A eval set.
 
 Use this BEFORE bulk-ingesting a large corpus: ingest a representative sample,
