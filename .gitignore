@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Models / data / runtime state (never commit these)
+*.gguf
+local_data/
+qdrant_storage/
+documents/
+documents_raw/
+*.jsonl
+!scripts/evalset.example.jsonl
+.preprocess-manifest.tsv
+.ingest-manifest.tsv
+
+# OS
+.DS_Store

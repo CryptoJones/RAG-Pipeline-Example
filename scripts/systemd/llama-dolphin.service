@@ -1,0 +1,13 @@
+[Unit]
+Description=llama.cpp server - Dolphin-2.9.1-Llama-3-8B (OpenAI-compatible, RTX 3060)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/home/USER/models/serve-dolphin.sh
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,13 @@
+[Unit]
+Description=llama.cpp server - nomic-embed-text-v1.5 (OpenAI-compatible embeddings, GTX 1080)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/home/USER/models/serve-embed.sh
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

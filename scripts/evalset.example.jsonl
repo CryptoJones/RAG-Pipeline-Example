@@ -1,0 +1,2 @@
+{"question": "Replace with a real question about your docs", "collection": "handbook", "expect": "substring that must appear in the answer", "expect_retrieved": "substring that must appear in a retrieved chunk"}
+{"question": "Another question (retrieval-only check)", "collection": "handbook", "expect_retrieved": "some exact phrase from the source"}

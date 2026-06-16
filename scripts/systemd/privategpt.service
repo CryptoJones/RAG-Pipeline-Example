@@ -1,0 +1,13 @@
+[Unit]
+Description=PrivateGPT (zylon-ai) RAG server - middleware on :8001
+After=network-online.target llama-dolphin.service llama-embed.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/home/USER/pgpt/serve-pgpt.sh
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target
