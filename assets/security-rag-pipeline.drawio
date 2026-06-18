@@ -6,7 +6,7 @@
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
 
-        <mxCell id="title" value="Security RAG + Exploit-Dev Pipeline — CJ Homelab" style="text;html=1;strokeColor=#27d4ff;fillColor=#0b1220;fontColor=#27d4ff;fontSize=20;fontStyle=1;align=center;verticalAlign=middle;rounded=1;" vertex="1" parent="1">
+        <mxCell id="title" value="Security RAG + Exploit-Dev Pipeline — CryptoJones" style="text;html=1;strokeColor=#27d4ff;fillColor=#0b1220;fontColor=#27d4ff;fontSize=20;fontStyle=1;align=center;verticalAlign=middle;rounded=1;" vertex="1" parent="1">
           <mxGeometry x="40" y="20" width="1480" height="46" as="geometry" />
         </mxCell>
 
@@ -77,8 +77,10 @@
         <mxCell id="e2" value="2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;flowAnimation=1;strokeColor=#55ff99;fontColor=#d6ffe6;labelBackgroundColor=#07090f;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="pgpt" target="dolphin">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e3" value="3 · embed query" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#27d4ff;fontColor=#bfe6ff;labelBackgroundColor=#07090f;exitX=0;exitY=0.85;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="dolphin" target="embed">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="e3" value="3 · embed query" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#27d4ff;fontColor=#bfe6ff;labelBackgroundColor=#07090f;exitX=0.12;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="dolphin" target="embed">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points"><mxPoint x="185" y="330" /></Array>
+          </mxGeometry>
         </mxCell>
         <mxCell id="e4" value="4 · dense+BM25" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#27d4ff;fontColor=#bfe6ff;labelBackgroundColor=#07090f;" edge="1" parent="1" source="embed" target="qdrant">
           <mxGeometry relative="1" as="geometry" />
@@ -86,17 +88,17 @@
         <mxCell id="e5" value="5 · top-K" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#b8a8ff;dashed=1;fontColor=#d8d0ff;labelBackgroundColor=#07090f;" edge="1" parent="1" source="qdrant" target="rerank">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e6" value="6 · reranked context" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#b8a8ff;dashed=1;fontColor=#d8d0ff;labelBackgroundColor=#07090f;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="rerank" target="dolphin">
+        <mxCell id="e6" value="6 · reranked context" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#b8a8ff;dashed=1;fontColor=#d8d0ff;labelBackgroundColor=#07090f;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.8;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="rerank" target="dolphin">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
         <!-- ===== route to the V620 specialists ===== -->
-        <mxCell id="e7" value="7 · route → audit / exploit" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;flowAnimation=1;strokeColor=#ff6e6e;fontColor=#ffb3b3;fontStyle=1;labelBackgroundColor=#07090f;" edge="1" parent="1" source="dolphin" target="hauhau">
+        <mxCell id="e7" value="7 · route → audit / exploit" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;flowAnimation=1;strokeColor=#ff6e6e;fontColor=#ffb3b3;fontStyle=1;labelBackgroundColor=#07090f;exitX=1;exitY=0.4;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dolphin" target="hauhau">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e8" value="route → code" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ff9b3d;fontColor=#ffd9b0;labelBackgroundColor=#07090f;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dolphin" target="coder">
+        <mxCell id="e8" value="route → code" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ff9b3d;fontColor=#ffd9b0;labelBackgroundColor=#07090f;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dolphin" target="coder">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points"><mxPoint x="1000" y="271" /><mxPoint x="1000" y="492" /></Array>
+            <Array as="points"><mxPoint x="1000" y="290" /><mxPoint x="1000" y="492" /></Array>
           </mxGeometry>
         </mxCell>
 
