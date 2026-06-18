@@ -36,10 +36,10 @@
         <mxCell id="marker" value="marker&#xa;PDF → Markdown preprocess" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0c1018;strokeColor=#5a6678;fontColor=#aeb8c6;" vertex="1" parent="pluto">
           <mxGeometry x="30" y="300" width="230" height="52" as="geometry" />
         </mxCell>
-        <mxCell id="g3060" value="RTX 3060 · 12GB&#xa;(orchestrator LLM)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#3a4456;fontColor=#7a8696;fontSize=10;dashed=1;" vertex="1" parent="pluto">
+        <mxCell id="g3060" value="RTX 3060 · 12GB&#xa;(orchestrator LLM)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1b2535;strokeColor=#8da4c0;fontColor=#e6eef8;fontSize=11;dashed=1;" vertex="1" parent="pluto">
           <mxGeometry x="380" y="300" width="180" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="g1080" value="Tesla P100 · 16GB&#xa;(embedder + reranker)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#3a4456;fontColor=#7a8696;fontSize=10;dashed=1;" vertex="1" parent="pluto">
+        <mxCell id="g1080" value="Tesla P100 · 16GB&#xa;(embedder + reranker)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1b2535;strokeColor=#8da4c0;fontColor=#e6eef8;fontSize=11;dashed=1;" vertex="1" parent="pluto">
           <mxGeometry x="610" y="300" width="180" height="50" as="geometry" />
         </mxCell>
 
@@ -74,10 +74,10 @@
             <Array as="points"><mxPoint x="780" y="172" /><mxPoint x="180" y="172" /></Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="e2" value="2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;flowAnimation=1;strokeColor=#55ff99;fontColor=#d6ffe6;labelBackgroundColor=#07090f;" edge="1" parent="1" source="pgpt" target="dolphin">
+        <mxCell id="e2" value="2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;flowAnimation=1;strokeColor=#55ff99;fontColor=#d6ffe6;labelBackgroundColor=#07090f;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="pgpt" target="dolphin">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e3" value="3 · embed query" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#27d4ff;fontColor=#bfe6ff;labelBackgroundColor=#07090f;" edge="1" parent="1" source="dolphin" target="embed">
+        <mxCell id="e3" value="3 · embed query" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#27d4ff;fontColor=#bfe6ff;labelBackgroundColor=#07090f;exitX=0;exitY=0.85;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="dolphin" target="embed">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="e4" value="4 · dense+BM25" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#27d4ff;fontColor=#bfe6ff;labelBackgroundColor=#07090f;" edge="1" parent="1" source="embed" target="qdrant">
