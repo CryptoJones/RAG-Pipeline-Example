@@ -27,8 +27,8 @@
         <mxCell id="embed" value="Qwen3-Embedding-0.6B&#xa;embedder · :8082 (Tesla P100)" style="label;html=1;whiteSpace=wrap;image=https://unpkg.com/@lobehub/icons-static-svg@1.91.0/icons/qwen-color.svg;imageWidth=24;imageHeight=24;imageAlign=left;imageVerticalAlign=middle;spacingLeft=34;rounded=1;fillColor=#0e1622;strokeColor=#55ff99;fontColor=#cfe9d8;" vertex="1" parent="pluto">
           <mxGeometry x="30" y="185" width="230" height="58" as="geometry" />
         </mxCell>
-        <mxCell id="qdrant" value="Qdrant&#xa;hybrid: dense + BM25" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#0e1622;strokeColor=#27d4ff;fontColor=#cfe6ff;" vertex="1" parent="pluto">
-          <mxGeometry x="320" y="172" width="190" height="82" as="geometry" />
+        <mxCell id="qdrant" value="Qdrant&#xa;hybrid: dense + BM25" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#0e1622;strokeColor=#27d4ff;fontColor=#cfe6ff;verticalAlign=middle;spacingTop=24;" vertex="1" parent="pluto">
+          <mxGeometry x="320" y="168" width="190" height="96" as="geometry" />
         </mxCell>
         <mxCell id="rerank" value="bge-reranker-v2-m3&#xa;[PLANNED · Tesla P100]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0c1018;strokeColor=#b8a8ff;fontColor=#d8d0ff;dashed=1;fontStyle=2;" vertex="1" parent="pluto">
           <mxGeometry x="570" y="185" width="220" height="58" as="geometry" />
